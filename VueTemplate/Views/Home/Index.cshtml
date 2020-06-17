@@ -1,0 +1,27 @@
+﻿@using VueTemplate.Models
+@{
+    Layout = null;
+}
+
+@model PrerenderResult
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    @Html.Raw(Model.ResourceHints)
+    @Html.Raw(Model.Styles)
+</head>
+<body>
+    <div id="app">
+        @Html.Raw(Model.Content)
+    </div>
+
+    @Html.Raw(Model.State)
+    @Html.Raw(Model.Scripts)
+</body>
+</html>

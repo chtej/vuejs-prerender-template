@@ -1,0 +1,33 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "@vue/airbnb"
+  ],
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "rules": {
+    "indent": [2, "tab", { "SwitchCase": 1, "VariableDeclarator": 1 }],
+    "no-tabs": 0,
+    "import/prefer-default-export": "off",
+    "no-param-reassign": "off",
+    "comma-dangle": ["error", "never"]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/*.{j,t}s?(x)",
+        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}

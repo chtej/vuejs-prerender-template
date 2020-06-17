@@ -1,0 +1,54 @@
+{
+  "name": "ssr-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "npm run clean && npm run build:client && npm run build:server",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
+    "build:client": "cross-env TARGET_ENV='client' vue-cli-service build --no-clean",
+    "build:server": "cross-env TARGET_ENV='server' vue-cli-service build --no-clean",
+    "clean": "rimraf ./dist-client/ && rimraf ./dist-server/",
+    "serve:ssr": "cross-env NODE_ENV='development' PUBLIC_PATH='http://127.0.0.1:9999' npm run build && npm run serve"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0",
+    "vuex-router-sync": "^5.0.0",
+    "vue-server-renderer": "^2.6.11",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-router": "~4.4.0",
+    "@vue/cli-plugin-unit-jest": "~4.4.0",
+    "@vue/cli-plugin-vuex": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/test-utils": "^1.0.3",
+    "babel-eslint": "^10.1.0",
+    "copy-webpack-plugin": "^6.0.2",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "lint-staged": "^9.5.0",
+    "node-sass": "^4.12.0",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^8.0.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
